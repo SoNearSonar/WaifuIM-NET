@@ -31,20 +31,6 @@ namespace WaifuIM.Web.Utilities
             return query.Substring(0, query.Length - 1);
         }
 
-        internal static string FormatQueryParams(FavoriteSettings settings)
-        {
-            string query = "?";
-            if (settings != null)
-            {
-                query += AddQueryParam("user_id", settings.UserId);
-                query += AddQueryParam("image_id", settings.ImageId);
-
-                return query.Substring(0, query.Length - 1);
-            }
-
-            return query.Substring(0, query.Length - 1);
-        }
-
         private static string AddQueryParam(string key, WaifuTag[] value)
         {
             if (value != null)
@@ -52,7 +38,7 @@ namespace WaifuIM.Web.Utilities
                 string result = string.Empty;
                 foreach (object item in value)
                 {
-                    result += AddQueryParam(key, item.ToString());
+                    result += AddQueryParam(key, item.ToString().ToLowerInvariant());
                 }
 
                 return result;
@@ -68,7 +54,7 @@ namespace WaifuIM.Web.Utilities
                 string result = string.Empty;
                 foreach (object item in value)
                 {
-                    result += AddQueryParam(key, item.ToString());
+                    result += AddQueryParam(key, item.ToString().ToLowerInvariant());
                 }
 
                 return result;
