@@ -193,5 +193,32 @@ namespace WaifuIM.Web.Tests
                 Assert.IsInstanceOfType(ex.InnerException, typeof(HttpRequestException));
             }
         }
+
+        [TestMethod]
+        public void TestReportImage_ValidApiKey_GivenData_ReturnsReportObject()
+        {
+            WaifuIMClient client = new WaifuIMClient(_token);
+            WaifuImageReport report = client.ReportImage(4565, "Test").Result;
+
+            Assert.IsNotNull(report);
+            Assert.IsTrue(report.ImageId == 4565);
+            Assert.IsTrue(report.AuthorId > 0);
+        }
+
+        [TestMethod]
+        public void TestReportImage_NoApiKey_ReturnsError()
+        {
+            WaifuIMClient client = new WaifuIMClient();
+
+            try
+            {
+                WaifuImageReport report = client.ReportImage(4565, "Test").Result;
+                Assert.Fail("Test case should not go here");
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsInstanceOfType(ex.InnerException, typeof(HttpRequestException));
+            }
+        }
     }
 }

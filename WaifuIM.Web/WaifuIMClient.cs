@@ -139,8 +139,8 @@ namespace WaifuIM.Web
         {
             string fullUrl = string.Concat(_url, "/report");
 
-            string imageIdJson = $"\"image_id\": {imageId}";
-            string descriptionJson = !string.IsNullOrWhiteSpace(description) ? $"\"description\": {description}," : string.Empty;
+            string imageIdJson = $"\"image_id\": {imageId},";
+            string descriptionJson = !string.IsNullOrWhiteSpace(description) ? $"\"description\": \"{description}\"" : string.Empty;
             string finalJson = "{" + imageIdJson + descriptionJson + "}";
 
             var content = new StringContent(finalJson, Encoding.UTF8, "application/json");
