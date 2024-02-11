@@ -9,6 +9,7 @@ namespace WaifuIM.Web.Tests
     [TestClass]
     public class WaifuIMClientTest
     {
+        // A token is required for most tests in this file
         private readonly string _token = "";
 
         [TestMethod]
@@ -219,6 +220,55 @@ namespace WaifuIM.Web.Tests
             {
                 Assert.IsInstanceOfType(ex.InnerException, typeof(HttpRequestException));
             }
+        }
+
+        [TestMethod]
+        public void TestToggleImage_ValidApiKey_GivenData_ReturnsReportObject()
+        {
+            WaifuIMClient client = new WaifuIMClient(_token);
+            WaifuFavoriteStatus status = client.ToggleFavoriteImage(4565).Result;
+
+            Assert.IsTrue(status == WaifuFavoriteStatus.Inserted || status == WaifuFavoriteStatus.Deleted);
+        }
+
+        [TestMethod]
+        public void TestToggleImage_NoApiKey_ReturnsError()
+        {
+            WaifuIMClient client = new WaifuIMClient();
+
+            try
+            {
+                WaifuFavoriteStatus status = client.ToggleFavoriteImage(4565).Result;
+                Assert.Fail("Test case should not go here");
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsInstanceOfType(ex.InnerException, typeof(HttpRequestException));
+            }
+        }
+
+        [TestMethod]
+        public void TestGetTags_ReturnsTagList()
+        {
+            WaifuIMClient client = new WaifuIMClient();
+
+            WaifuTagList list = client.GetTags().Result;
+
+            Assert.IsNotNull(list);
+            Assert.IsTrue(list.VersatileTags.Length > 0);
+            Assert.IsTrue(list.NsfwTags.Length > 0);
+        }
+
+        [TestMethod]
+        public void TestGetFullTags_ReturnsFullTagList()
+        {
+            WaifuIMClient client = new WaifuIMClient();
+
+            WaifuFullTagList list = client.GetFullTags().Result;
+
+            Assert.IsNotNull(list);
+            Assert.IsTrue(list.VersatileTags.Length > 0);
+            Assert.IsTrue(list.NsfwTags.Length > 0);
         }
     }
 }
