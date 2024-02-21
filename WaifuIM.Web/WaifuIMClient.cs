@@ -73,12 +73,7 @@ namespace WaifuIM.Web
         {
             string fullUrl = string.Concat(_url, "/fav/insert");
 
-            string userIdJson = string.Empty;
-            if (userId > 0)
-            {
-                userIdJson = $"\"user_id\": {userId},";
-            }
-
+            string userIdJson = userId > 0 ? $"\"user_id\": {userId}," : string.Empty;
             string imageIdJson = $"\"image_id\": {imageId}";
             string finalJson = "{" + userIdJson + imageIdJson + "}";
 
@@ -118,7 +113,7 @@ namespace WaifuIM.Web
         {
             string fullUrl = string.Concat(_url, "/fav/toggle");
 
-            string userIdJson = imageId > 0 ? $"\"user_id\": {userId}," : string.Empty;
+            string userIdJson = userId > 0 ? $"\"user_id\": {userId}," : string.Empty;
             string imageIdJson = $"\"image_id\": {imageId}";
             string finalJson = "{" + userIdJson + imageIdJson + "}";
 
