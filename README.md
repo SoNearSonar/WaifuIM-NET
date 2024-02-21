@@ -1,6 +1,9 @@
 # WaifuIM-NET
 ## An improved client for Waifu.IM's web API written in C#/.NET. Successor to WaifuImAPI-NET
 
+## NuGet Package:
+[![WaifuIM.Web NuGet](https://img.shields.io/nuget/vpre/WaifuIM.Web?label=WaifuIM.Web&style=for-the-badge)](https://www.nuget.org/packages/WaifuIM.Web/)
+
 ## Predecessor:
 [WaifuImAPI-NET](https://github.com/SoNearSonar/WaifuImAPI-NET)
 
