@@ -72,6 +72,27 @@ namespace WaifuIM.Web.Tests
         }
 
         [TestMethod]
+        public void TestGetImages_NoApiKey_AddedNewSettings_BeyondLimit_ReturnsImageList()
+        {
+            WaifuIMClient client = new WaifuIMClient(_token);
+
+            SearchSettings searchSettings = new SearchSettings()
+            {
+                Limit = 31,
+            };
+
+            try
+            {
+                List<WaifuImage> images = client.GetImages(searchSettings).Result;
+                Assert.Fail("Test case should not go here");
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsInstanceOfType(ex.InnerException, typeof(HttpRequestException));
+            }
+        }
+
+        [TestMethod]
         public void TestGetImages_NoApiKey_AddedSettings_ReturnsImageList()
         {
             WaifuIMClient client = new WaifuIMClient();
