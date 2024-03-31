@@ -55,6 +55,23 @@ namespace WaifuIM.Web.Tests
         }
 
         [TestMethod]
+        public void TestGetImages_NoApiKey_AddedNewSettings_ReturnsImageList()
+        {
+            WaifuIMClient client = new WaifuIMClient(_token);
+
+            SearchSettings searchSettings = new SearchSettings()
+            {
+                Limit = 25,
+            };
+
+            List<WaifuImage> images = client.GetImages(searchSettings).Result;
+
+            Assert.IsNotNull(images);
+            Assert.IsTrue(images.Count == 25);
+            Assert.IsTrue(images[0].ImageId != 0);
+        }
+
+        [TestMethod]
         public void TestGetImages_NoApiKey_AddedSettings_ReturnsImageList()
         {
             WaifuIMClient client = new WaifuIMClient();

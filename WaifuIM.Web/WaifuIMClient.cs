@@ -15,7 +15,7 @@ namespace WaifuIM.Web
     public class WaifuIMClient
     {
         private readonly string _url = "https://api.waifu.im";
-        private readonly string _acceptVersion = "v5";
+        private readonly string _acceptVersion = "v6";
         private static HttpClient _httpClient;
 
         public WaifuIMClient(string token)

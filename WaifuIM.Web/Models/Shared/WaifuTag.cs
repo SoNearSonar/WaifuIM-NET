@@ -18,6 +18,7 @@ namespace WaifuIM.Web.Models
         [EnumMember(Value = "marin-kitagawa")] MarinKitagawa,
         [EnumMember(Value = "mori-calliope")] MoriCalliope,
         [EnumMember(Value = "raiden-shogun")] RaidenShogun,
+        [EnumMember(Value = "kamisato-ayaka")] KamisatoAyaka,
         [EnumMember(Value = "oppai")] Oppai,
         [EnumMember(Value = "selfies")] Selfies,
         [EnumMember(Value = "uniform")] Uniform,

@@ -55,9 +55,9 @@
         public string ByteSize { get; set; }
 
         /// <summary>
-        ///   If the image search should return at most 30 images meeting the search criteria
+        ///   The limit of files that are returned at once when a image search is done
         /// </summary>
-        public bool ManyFiles { get; set; }
+        public uint Limit { get; set; }
 
         /// <summary>
         ///   If the image search should return every result meeting the search criteria (> 30 images).

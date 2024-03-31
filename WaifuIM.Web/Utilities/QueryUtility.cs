@@ -15,12 +15,11 @@ namespace WaifuIM.Web.Utilities
                 query += AddQueryParam("is_nsfw", settings.IsNsfw);
                 query += AddQueryParam("gif", settings.OnlyGif);
                 query += AddQueryParam("order_by", settings.OrderBy.GetEnumMemberValue());
-                string s = settings.Orientation.GetEnumMemberValue();
-                query += AddQueryParam("orientation", s);
+                query += AddQueryParam("orientation", settings.Orientation.GetEnumMemberValue());
                 query += AddQueryParam("height", settings.Height);
                 query += AddQueryParam("width", settings.Width);
                 query += AddQueryParam("byte_size", settings.ByteSize);
-                query += AddQueryParam("many", settings.ManyFiles);
+                query += AddQueryParam("limit", settings.Limit);
                 query += AddQueryParam("full", settings.FullResult);
                 query += AddQueryParam("included_files", settings.IncludedFiles);
                 query += AddQueryParam("excluded_files", settings.ExcludedFiles);
